@@ -38,11 +38,34 @@ static std::string invert(std::string source) {
 void main() {{
     main_uninverted();
 
-    // Invert Colors
-    {0}.rgb = vec3(1.) - vec3(.88, .9, .92) * {0}.rgb;
+        // Original implementation by alexhulbert (https://github.com/alexhulbert/Hyprchroma)
+        // Original shader by ikz87
 
-    // Invert Hue
-    {0}.rgb = dot(vec3(0.26312, 0.5283, 0.10488), {0}.rgb) * 2.0 - {0}.rgb;
+        // Apply opacity changes to pixels similar to one color
+        // vec3 color_rgb = vec3(0,0,255); // Color to replace, in rgb format
+        float similarity = 0.1; // How many similar colors should be affected.
+
+        float amount = 1.4; // How much similar colors should be changed.
+        float target_opacity = 0.83;
+        // Change any of the above values to get the result you want
+
+        // Set values to a 0 - 1 range
+        vec3 chroma = vec3(15.0/255.0, 15.0/255.0, 15.0/255.0);
+
+        if ({0}.x >=chroma.x - similarity && {0}.x <=chroma.x + similarity &&
+                {0}.y >=chroma.y - similarity && {0}.y <=chroma.y + similarity &&
+                {0}.z >=chroma.z - similarity && {0}.z <=chroma.z + similarity &&
+                {0}.w >= 0.99)
+        {{
+            // Calculate error between matched pixel and color_rgb values
+                vec3 error = vec3(abs(chroma.x - {0}.x), abs(chroma.y - {0}.y), abs(chroma.z - {0}.z));
+            float avg_error = (error.x + error.y + error.z) / 3.0;
+            {0}.w = target_opacity + (1.0 - target_opacity)*avg_error*amount/similarity;
+
+            // for testing:
+            // {0}.rgba = vec4(0, 0, 1, 1);
+        }}
+
 }}
     )glsl", outVar);
 

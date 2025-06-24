@@ -83,22 +83,22 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle)
     g_surfacePassDraw = HyprlandAPI::createFunctionHook(handle, pDraw->address, (void*)&hkSurfacePassDraw);
     g_surfacePassDraw->hook();
 
-    HyprlandAPI::addDispatcherV2(PHANDLE, "invertwindow", [&](std::string args) {
+    HyprlandAPI::addDispatcherV2(PHANDLE, "greenwindow", [&](std::string args) {
         std::lock_guard<std::mutex> lock(g_InverterMutex);
         g_WindowInverter.ToggleInvert(g_pCompositor->getWindowByRegex(args));
         return SDispatchResult{};
     });
-    HyprlandAPI::addDispatcherV2(PHANDLE, "invertactivewindow", [&](std::string args) {
+    HyprlandAPI::addDispatcherV2(PHANDLE, "greenactivewindow", [&](std::string args) {
         std::lock_guard<std::mutex> lock(g_InverterMutex);
         g_WindowInverter.ToggleInvert(g_pCompositor->m_lastWindow.lock());
         return SDispatchResult{};
     });
 
     return {
-        "Hypr-DarkWindow",
-        "Allows you to set dark mode for only specific Windows",
-        "micha4w",
-        "3.0.1"
+        "hyprgreen",
+        "Adds Chromakey Effect to Windows",
+        "FridayFaerie",
+        "1.0.0"
     };
 }
 

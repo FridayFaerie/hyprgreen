@@ -1,3 +1,10 @@
+hyprland plugin that adds chromakey effects; a specific color can be mapped to a certain opacity. mainly just copied form alexhulbert (https://github.com/alexhulbert/Hyprchroma), as a simple modification on Hypr-DarkWindow (https://github.com/micha4w/Hypr-DarkWindow)
+
+changed the dispatches and windowrules by `invert` -> `green`
+
+
+Original README:
+
 # Hypr-DarkWindow
 Hyprland plugin that adds possibility to invert the color of specific windows.
 

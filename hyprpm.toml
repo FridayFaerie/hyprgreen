@@ -1,8 +1,8 @@
 [repository]
-name = "Hypr-DarkWindow"
-authors = ["micha4w"]
+name = "hyprgreen"
+authors = ["FridayFaerie"]
 commit_pins = [
-    # v Hyprland                                  v Hypr-DarkWindow
+    # v Hyprland                                  v hyprgreen
     ["1c460e98f870676b15871fe4e5bfeb1a32a3d6d8", "7eb7e04dea8cb92f22b7c2df4c78d4f29e28643d"], # v0.36.0
     ["19c90048d65a5660384d2fb865926a366696d6be", "7eb7e04dea8cb92f22b7c2df4c78d4f29e28643d"], # v0.37.0
     ["c5e28ebcfe00a510922779b2c568cfa52a317445", "7eb7e04dea8cb92f22b7c2df4c78d4f29e28643d"], # v0.37.1
@@ -34,10 +34,10 @@ commit_pins = [
 
 ]
 
-[Hypr-DarkWindow]
-description = "Invert the colors of specific Windows"
-authors = ["micha4w"]
-output = "out/hypr-darkwindow.so"
+[hyprgreen]
+description = "Add Chromakey Effect to Windows"
+authors = ["FridayFaerie"]
+output = "out/hyprgreen.so"
 build = [
     "make all -j",
 ]
