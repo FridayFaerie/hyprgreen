@@ -50,7 +50,7 @@ void main() {{
         // Change any of the above values to get the result you want
 
         // Set values to a 0 - 1 range
-        vec3 chroma = vec3(15.0/255.0, 15.0/255.0, 15.0/255.0);
+        vec3 chroma = vec3(18.0/255.0, 15.0/255.0, 14.0/255.0);
 
         if ({0}.x >=chroma.x - similarity && {0}.x <=chroma.x + similarity &&
                 {0}.y >=chroma.y - similarity && {0}.y <=chroma.y + similarity &&
